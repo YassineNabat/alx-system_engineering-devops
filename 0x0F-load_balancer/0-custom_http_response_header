@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+sudo apt-get update -y
+
+sudo apt-get install nginx -y
+
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/custom_404.html
+
+sudo sed -i "/server_name _;/a\
+rewrite ^\/redirect_me https:\/\/github.com\/Tolulope05 permanent;\
+error_page 404 \/custom_404.html;\
+location = \/custom_404.html {\
+root \/usr\/share\/nginx\/html;\
+internal;\
+}" /etc/nginx/sites-available/default
+
+sudo sed -i "/include \/etc\/nginx\/sites-enabled\/\*;/a\
+add_header X-Served-By \"$HOSTNAME\";" /etc/nginx/nginx.conf
+
+sudo systemctl restart nginx
