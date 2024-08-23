@@ -1,3 +1,5 @@
+![40754ccf-83c5-4695-b66d-d4498f17663e](https://github.com/user-attachments/assets/f77683af-7be9-4d89-baf4-f90a371ffa79)
+
 <h1>Issue Summary</h1>
 On August 20, 2024, from 09:00 to 12:30 UTC, our internal HR application experienced an outage, affecting 75% of employees trying to access the platform. During this time, users were unable to log in, submit leave requests, or view employee records. The root cause was a miscommunication between the authentication service and the database due to a broken API endpoint, which resulted in failed login attempts and data retrieval errors.
 
